@@ -1,0 +1,23 @@
+.center div {
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+.admin_btns {
+	padding: 15px 30px;
+	color: whitesmoke;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-size: 1.2em;
+	border: 2px solid #f1ddaa;
+	border-radius: 20px;
+	height: 80px;
+	width: 250px;
+}
+
+.admin_btns:hover {
+	cursor: pointer;
+	background-color: #f1ddaa;
+	color: black;
+	transition: ease-in 0.25s;
+}

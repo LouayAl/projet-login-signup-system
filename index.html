@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr" id="particles-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="shortcut icon"
+			href="/public/images/favicon.ico"
+			type="image/x-icon"
+		/>
+		<title>Gestion des étudiants</title>
+		<link rel="stylesheet" href="/public/fonts/NotoSans-Regular.ttf" />
+		<link rel="stylesheet" href="/public/fonts/NotoSans-Bold.ttf" />
+		<link rel="stylesheet" href="/public/css/style.css" />
+		<link rel="stylesheet" href="/public/css/index.css" />
+	</head>
+	<body>
+		<div class="main-center center">
+			<div class="login" id="users">
+				<img
+					src="./public/images/students.png"
+					alt="Button d'étudiants"
+				/>
+				<div class="btn-div">
+					<button class="btn" id="etudiant_btn">Étudiants</button>
+				</div>
+			</div>
+			<div class="login" id="admin">
+				<img
+					src="./public/images/admin.png"
+					alt="Button d'administration"
+				/>
+				<div class="btn-div">
+					<button class="btn" id="admin_btn">Administration</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- Particles -->
+	<script src="/public/js/particles.min.js"></script>
+	<script src="/public/js/particles_init.js"></script>
+
+	<!-- Script -->
+	<script>
+		// Buttons.
+		const etudiant_btn = document.getElementById('etudiant_btn');
+		const admin_btn = document.getElementById('admin_btn');
+
+		// Clickage.
+		etudiant_btn.addEventListener('click', function () {
+			window.location.href = './pages/student_login.php';
+		});
+		admin_btn.addEventListener('click', function () {
+			window.location.href = './pages/admin_login.php';
+		});
+
+		// TODO images clickable.
+	</script>
+</html>

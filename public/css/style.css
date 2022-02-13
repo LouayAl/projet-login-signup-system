@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Noto Sans';
+}
+
+html {
+	background: url('../images/background.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#particles-js {
+	height: 98%;
+	width: 98%;
+	position: absolute;
+	z-index: -1;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.main-center {
+	display: flex;
+	min-height: 50%;
+	min-width: 60%;
+	border-radius: 8px;
+	padding-bottom: 10px;
+	/* border: 2px solid white; */
+}
+
+.login_form #invalid_login {
+	color: red;
+	font-size: 1em;
+	margin: 10px;
+}
+
+.login_form #return_login,
+#signup_login {
+	font-size: 1.1em;
+}
+
+.login_form #return_login:hover {
+	cursor: pointer;
+	color: #f0dcab9f;
+}
+
+.login_form #signup_span {
+	color: rgb(240, 233, 219);
+	text-decoration: underline;
+}
+.login_form #signup_span:hover {
+	cursor: pointer;
+	color: yellow;
+}
