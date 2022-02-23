@@ -90,6 +90,15 @@ html {
 	text-align: right;
 }
 
+#logout_div button {
+	background-color: #465a92;
+	border: 1px solid #465a92;
+}
+
+#logout_div button:hover {
+	background-color: #163385;
+}
+
 #signup_head_div button {
 	float: right;
 	margin-bottom: 5px;

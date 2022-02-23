@@ -16,11 +16,12 @@
         $file_name = addslashes("/public/images/users/$cin.$extension");
         $file_name_save = $_SERVER["DOCUMENT_ROOT"] . "/public/images/users/$cin.$extension";
 
+        // Change profile picture in db.
+        $result = addProfilPicture($cin, "image", $file_name);
+
         // Save image.
         file_put_contents($file_name_save, base64_decode($image));
 
-        // Change profile picture in db.
-        $result = addProfilPicture($cin, "image", $file_name);
         echo $result;
     } else {
         echo false;

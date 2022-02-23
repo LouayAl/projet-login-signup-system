@@ -135,12 +135,12 @@
     }
 
     // Mise a jour d'etudiant.
-    function updateStudent($cin, $user, $pass, $nom, $prenom, $email, $dtn, $tel, $pays, $vl, $sexe) {
-        global $conn;
+    function updateStudent($cin, $user, $pass, $nom, $prenom, $email, $dtn, $tel, $pays, $vl, $sexe, $niveau, $filiere) {
+        $conn = openConnection();
 
         // Validation.
         // Requis.
-        if (!isset($cin) || !isset($user) || !isset($pass)) {
+        if (!isset($cin)) {
             return false;
         }
 
@@ -151,19 +151,25 @@
         }
 
         // Valider utilisateur.
-        if ($etudiant["utilisateur"] !== $user) {
-            $user_valid = getStudentByUser($user);
-            if(isset($user_valid)) {
-                return false;
+        if(isset($utilisateur)) {
+            if ($user !== $etudiant["utilisateur"]) {
+                $user_valid = getStudentByUser($user);
+                if(isset($user_valid)) {
+                    return false;
+                }
             }
         }
 
         // Mot de passe.
-        if (strlen($pass) < 5) {
-            return false;
+        if(isset($pass) && strlen($pass) > 0) {
+            if (strlen($pass) < 5) {
+                return false;
+            }
+            // Hash.
+            $pass = password_hash($pass, PASSWORD_DEFAULT);
+        } else {
+            $pass = $etudiant["mot_de_passe"];
         }
-        // Hash.
-        $pass = password_hash($pass, PASSWORD_DEFAULT);
 
         // Email.
         if(isset($email)) {
@@ -172,15 +178,9 @@
             }
         }
 
-        // Date de naissance.
-        if(isset($dtn)) {
-            if (DateTime::createFromFormat('d/m/Y', $dtn) !== true) {
-                return false;
-            }
-        }
-
         // Sexe.
         if (isset($sexe)) {
+            $sexe = strtolower($sexe);
             if ($sexe !== 'm' && $sexe !== 'f') {
                 return false;
             }
@@ -188,8 +188,8 @@
 
         // Requete.
         $query = "UPDATE etudiants SET utilisateur = '$user', mot_de_passe = '$pass', nom = '$nom', " .
-                "prenom = '$prenom', email = '$email', date_de_naissance = '$dtn', " .
-                "tel = '$tel', pays = '$pays', ville = '$vl', sexe = '$sexe' WHERE cin = '$cin';";
+                "prenom = '$prenom', email = '$email', date_n = '$dtn', " .
+                "tel = '$tel', pays = '$pays', ville = '$vl', sexe = '$sexe', niveau = '$niveau', filiere = '$filiere' WHERE cin = '$cin';";
         $query_result = mysqli_query($conn, $query);
 
         // Fermer la connection.

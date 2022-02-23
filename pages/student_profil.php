@@ -36,6 +36,11 @@
 		<div
 			class="panel-body inf-content container bootstrap snippets bootdey" id="profile_div"
 		>
+            <div id="logout_div">
+                <form method="POST" action="/back/functions/logout.php">
+                    <button type="submit" class="btn btn-primary">Se déconnecter</button>
+                </form>
+            </div>
 			<div class="row">
 				<div class="col-md-4" id="image_div">
 					<img
@@ -105,7 +110,7 @@
 										</strong>
 									</td>
 									<td class="text-primary">
-										<?php echo $student["cin"]; ?>
+										<?php echo $student["tel"]; ?>
 									</td>
 								</tr>
 								<tr>
@@ -165,15 +170,21 @@
 							</tbody>
 						</table>
 					</div>
-                    <div id="logout_div">
-                        <form method="POST" action="/back/functions/logout.php">
-                            <button type="submit" class="btn btn-primary">Se déconnecter</button>
-                        </form>
+                    <!-- Update -->
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-primary" id="update_profile_btn">Mettre à jour le profil</button>
                     </div>
 				</div>
 			</div>
 		</div>
 	</body>
+    <script>
+        const update_profile_btn = document.getElementById("update_profile_btn");
+        update_profile_btn.addEventListener('click', () => {
+            window.location.href = '/pages/student_update.php';
+        });
+    </script>
+
     <script>
         // Variables.
         const profile_image_input = document.getElementById("profile_image_input");
